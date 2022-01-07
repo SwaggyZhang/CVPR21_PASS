@@ -1,14 +1,19 @@
 ## PASS - Official PyTorch Implementation
+
 ![](./framework.png)
 
 ### [CVPR2021 Oral] Prototype Augmentation and Self-Supervision for Incremental Learning
+
 Fei Zhu, Xu-Yao Zhang, Chuang Wang,  Fei Yin, Cheng-Lin Liu<br>
 [Paper](https://openaccess.thecvf.com/content/CVPR2021/papers/Zhu_Prototype_Augmentation_and_Self-Supervision_for_Incremental_Learning_CVPR_2021_paper.pdf)
-### Usage 
+
+### Usage
+
 run `main.py`.
 
-### Citation 
-```
+### Citation
+
+```tex
 @InProceedings{Zhu_2021_CVPR,
     author    = {Zhu, Fei and Zhang, Xu-Yao and Wang, Chuang and Yin, Fei and Liu, Cheng-Lin},
     title     = {Prototype Augmentation and Self-Supervision for Incremental Learning},
@@ -20,6 +25,8 @@ run `main.py`.
 ```
 
 ### Reference
+
 Our implementation references the codes in the following repositories:
+
 * <https://github.com/DRSAD/iCaRL>
 * <https://github.com/hankook/SLA>
