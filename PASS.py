@@ -158,8 +158,8 @@ class protoAugSSL:
                 if feature.shape[0] == self.args.batch_size:
                     labels.append(target.numpy())
                     features.append(feature.cpu().numpy())
-        labels_set = np.unique(labels)
-        labels = np.array(labels)
+        labels_set = np.unique(labels)  # 当前loader中的标签集合，无重复
+        labels = np.array(labels)  # target
         labels = np.reshape(labels, labels.shape[0] * labels.shape[1])
         features = np.array(features)
         features = np.reshape(features, (features.shape[0] * features.shape[1], features.shape[2]))
@@ -169,13 +169,13 @@ class protoAugSSL:
         radius = []
         class_label = []
         for item in labels_set:
-            index = np.where(item == labels)[0]
+            index = np.where(item == labels)[0]  # 标签在target中的索引list -> 也对应样本在整个样本集合中的索引list
             class_label.append(item)
-            feature_classwise = features[index]
-            prototype.append(np.mean(feature_classwise, axis=0))
+            feature_classwise = features[index]  # 取list对应位置的所有样本
+            prototype.append(np.mean(feature_classwise, axis=0))  # 求平均，构建原型
             if current_task == 0:
-                cov = np.cov(feature_classwise.T)
-                radius.append(np.trace(cov) / feature_dim)
+                cov = np.cov(feature_classwise.T)  # 求同类别embedding的协方差矩阵
+                radius.append(np.trace(cov) / feature_dim) # 协方差矩阵的迹（即方差的和）/feature维度
 
         if current_task == 0:
             self.radius = np.sqrt(np.mean(radius))
